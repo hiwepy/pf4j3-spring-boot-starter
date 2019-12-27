@@ -13,7 +13,7 @@
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>pf4j3-spring-boot-starterr</artifactId>
 	<description>Spring Boot Starter For Pf4j 3.x</description>
-	<version>1.0.8-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<url>https://github.com/hiwepy/${project.artifactId}</url>
 	<packaging>jar</packaging>
