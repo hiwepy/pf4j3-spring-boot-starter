@@ -1,10 +1,10 @@
-# pf4j2-spring-boot-starter
+# pf4j3-spring-boot-starter
 pf4j starter for spring boot
 
 ### 说明
 
 
- > 基于 Pf4j 2.x 的 Spring Boot Starter 实现
+ > 基于 Pf4j 3.x 的 Spring Boot Starter 实现
 
 1. 整合Pf4j插件能力
 
@@ -12,8 +12,8 @@ pf4j starter for spring boot
 
 ``` xml
 <dependency>
-	<groupId>${project.groupId}</groupId>
-	<artifactId>pf4j2-spring-boot-starter</artifactId>
+	<groupId>com.github.hiwepy</groupId>
+	<artifactId>pf4j3-spring-boot-starter</artifactId>
 	<version>${project.version}</version>
 </dependency>
 ```
