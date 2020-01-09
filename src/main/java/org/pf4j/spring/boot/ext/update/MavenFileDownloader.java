@@ -37,7 +37,6 @@ public class MavenFileDownloader implements FileDownloader {
      * @param fileUrl the URI representing the file to download
      * @return the path of downloaded/copied file
      * @throws IOException in case of network or IO problems
-     * @throws PluginException in case of other problems
      */
     public Path downloadFile(URL fileUrl) throws IOException {
         switch (fileUrl.getProtocol()) {
@@ -56,7 +55,6 @@ public class MavenFileDownloader implements FileDownloader {
      * @param fileUrl source file
      * @return path of downloaded file
      * @throws IOException if IO problems
-     * @throws PluginException if validation fails or any other problems
      */
     protected Path downloadFileHttp(URL fileUrl) throws IOException {
     	
