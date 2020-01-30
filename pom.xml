@@ -372,7 +372,7 @@
         <maven-surefire-plugin.vertsion>2.22.1</maven-surefire-plugin.vertsion>
 		<maven-nexus-staging-plugin.version>1.6.8</maven-nexus-staging-plugin.version>
 		<pf4j.version>3.2.0</pf4j.version>
-		<pf4j-update.version>2.2.0</pf4j-update.version>
+		<pf4j-update.version>2.3.0</pf4j-update.version>
 		<pf4j-spring.version>0.5.0</pf4j-spring.version>
 		<slf4j.version>1.7.26</slf4j.version>
 		<spring-cloud-deployer.version>2.1.1.RELEASE</spring-cloud-deployer.version>
@@ -495,6 +495,7 @@
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-deployer-resource-maven</artifactId>
+		    <scope>provided</scope>
 		</dependency>
 				
 	</dependencies>
