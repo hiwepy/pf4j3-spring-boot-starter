@@ -30,7 +30,7 @@ public class Pf4jUpdateProperties {
 	private boolean enabled = false;
 	/** Local Repos Path , i.e : repositories.json **/
 	private String reposJsonPath;
-	/** Local Repos Path , i.e : http://say-hello/repositories **/
+	/** Local Repos Path , i.e : http://say-hello/repos **/
 	private String reposRestPath;
 	/** Remote Repos Path **/
 	private List<Pf4jPluginRepoProperties> repos = new ArrayList<Pf4jPluginRepoProperties>();
