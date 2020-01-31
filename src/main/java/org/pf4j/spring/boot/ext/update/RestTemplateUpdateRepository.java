@@ -46,12 +46,18 @@ import com.google.gson.GsonBuilder;
 public class RestTemplateUpdateRepository implements UpdateRepository {
 	
 	private static final Logger log = LoggerFactory.getLogger(RestTemplateUpdateRepository.class);
-	
-    private String id;
+	private static final String REST_REPOSITORY = "rest";
+	 
+    private String id = REST_REPOSITORY;
     // http://say-hello/sayHello
     private String url;
     private RestTemplate restTemplate;
     private Map<String, PluginInfo> plugins;
+	
+	public RestTemplateUpdateRepository(String url, RestTemplate restTemplate) {
+		this.url = url;
+		this.restTemplate = restTemplate;
+	}
 	
 	public RestTemplateUpdateRepository(String id, String url, RestTemplate restTemplate) {
 		this.id = id;
@@ -59,7 +65,6 @@ public class RestTemplateUpdateRepository implements UpdateRepository {
 		this.restTemplate = restTemplate;
 	}
 	
-
     @Override
     public String getId() {
         return id;
@@ -72,9 +77,7 @@ public class RestTemplateUpdateRepository implements UpdateRepository {
 	
 	@Override
     public Map<String, PluginInfo> getPlugins() {
-        if (plugins == null) {
-        	initPlugins();
-        }
+    	initPlugins();
         return plugins;
     }
 	
@@ -115,7 +118,6 @@ public class RestTemplateUpdateRepository implements UpdateRepository {
     public PluginInfo getPlugin(String id) {
         return getPlugins().get(id);
     }
-
 
     /**
      * Causes {@code plugins.json} to be read again to look for new updates from repositories.

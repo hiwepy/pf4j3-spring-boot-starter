@@ -2,7 +2,9 @@
 ###pf4j (本地需要配置Maven环境) 基本配置：  
 ################################################################################################################
 pf4j:
-  jar-packages: true
+  enabled: true
+  update:
+    enabled: true    repos-rest-path: http://say-hello/repositories 
   maven:
     enabled: false
     # 当Maven验证构件校验文件失败时该怎么做-ignore（忽略），fail（失败），或者warn（警告）。

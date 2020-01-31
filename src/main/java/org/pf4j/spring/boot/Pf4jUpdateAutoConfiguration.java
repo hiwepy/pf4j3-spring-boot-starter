@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 import org.pf4j.PluginManager;
 import org.pf4j.spring.boot.ext.property.Pf4jPluginRepoProperties;
+import org.pf4j.spring.boot.ext.update.RestTemplateUpdateRepository;
 import org.pf4j.update.DefaultUpdateRepository;
 import org.pf4j.update.UpdateManager;
 import org.pf4j.update.UpdateRepository;
@@ -35,6 +36,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.client.RestTemplate;
 
 
 /**
@@ -52,6 +54,7 @@ public class Pf4jUpdateAutoConfiguration {
 	public UpdateManager updateManager(
 			PluginManager pluginManager,
 			@Autowired(required = false) ObjectProvider<UpdateRepository> repoProvider,
+			@Autowired(required = false) ObjectProvider<RestTemplate> restTemplateProvider,
 			Pf4jUpdateProperties properties) {
 		
 		List<UpdateRepository> repositories = new ArrayList<>();
@@ -60,6 +63,13 @@ public class Pf4jUpdateAutoConfiguration {
 				repositories.add(new DefaultUpdateRepository(repo.getId(), repo.getUrl(), repo.getPluginsJsonFileName()));
 			}
 		}
+		
+		if(StringUtils.hasText(properties.getReposRestPath())) {
+			restTemplateProvider.ifAvailable(restTemplate -> {
+				repositories.add(new RestTemplateUpdateRepository(properties.getReposRestPath(), restTemplate));
+			});
+		}
+		
 		List<UpdateRepository> repos = repoProvider.orderedStream().collect(Collectors.toList());
 		if(!CollectionUtils.isEmpty(repos)) {
 			for (UpdateRepository newRepo : repos) {
