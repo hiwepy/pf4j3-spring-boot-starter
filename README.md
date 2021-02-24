@@ -14,11 +14,9 @@ pf4j starter for spring boot
 <dependency>
 	<groupId>com.github.hiwepy</groupId>
 	<artifactId>pf4j3-spring-boot-starter</artifactId>
-	<version>${project.version}</version>
+	<version>1.0.2.RELEASE</version>
 </dependency>
 ```
 
 ### Sample
-
-[https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-sample-pf4j2](https://github.com/vindell/spring-boot-starter-samples/tree/master/spring-boot-sample-pf4j2 "spring-boot-sample-pf4j2")
 
