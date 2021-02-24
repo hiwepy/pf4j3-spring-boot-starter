@@ -15,8 +15,8 @@
  */
 package org.pf4j.spring.boot.ext;
 
-import org.pf4j.PluginManager;
 import org.pf4j.spring.ExtensionsInjector;
+import org.pf4j.spring.SpringPluginManager;
 import org.pf4j.spring.boot.ext.registry.Pf4jDynamicControllerRegistry;
 import org.pf4j.spring.boot.ext.utils.InjectorUtils;
 import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
@@ -30,10 +30,10 @@ public class ExtendedExtensionsInjector extends ExtensionsInjector {
 	
 	protected Pf4jDynamicControllerRegistry dynamicControllerRegistry;
 	
-	public ExtendedExtensionsInjector(PluginManager pluginManager, 
+	public ExtendedExtensionsInjector(SpringPluginManager springPluginManager, 
 			Pf4jDynamicControllerRegistry dynamicControllerRegistry,
 			ApplicationContext applicationContext) {
-		super(pluginManager, (AbstractAutowireCapableBeanFactory) applicationContext.getAutowireCapableBeanFactory());
+		super(springPluginManager, (AbstractAutowireCapableBeanFactory) applicationContext.getAutowireCapableBeanFactory());
 		this.dynamicControllerRegistry = dynamicControllerRegistry;
 	}
 	
@@ -47,7 +47,7 @@ public class ExtendedExtensionsInjector extends ExtensionsInjector {
 	@Override
 	protected void registerExtension(Class<?> extensionClass) {
        
-		Object extension = pluginManager.getExtensionFactory().create(extensionClass);
+		Object extension = springPluginManager.getExtensionFactory().create(extensionClass);
 		if(!InjectorUtils.isInjectNecessary(extensionClass)) {
 			return;
 		}
