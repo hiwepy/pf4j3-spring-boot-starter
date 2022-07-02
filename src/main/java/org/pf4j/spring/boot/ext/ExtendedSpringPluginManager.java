@@ -33,14 +33,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author 		： <a href="https://github.com/hiwepy">hiwepy</a>
  */
 public class ExtendedSpringPluginManager extends SpringPluginManager {
-	
+
 	/** Whether to automatically inject dependent objects */
 	private boolean autowire = true;
 	/** Whether always returns a singleton instance. */
 	private boolean singleton = true;
 	/** Whether to register the object to the spring context */
 	private boolean injectable = true;
-	
+
 	public ExtendedSpringPluginManager(File pluginsRoot, boolean autowire, boolean singleton, boolean injectable ) {
 		super(pluginsRoot.toPath());
 		this.autowire = autowire;
@@ -69,14 +69,15 @@ public class ExtendedSpringPluginManager extends SpringPluginManager {
     	}
         return new SpringExtensionFactory(this, this.isAutowire());
     }
-    
+
     @Autowired
     private Pf4jDynamicControllerRegistry dynamicControllerRegistry;
-    
+
 	/**
      * This method load, start plugins and inject controller extensions in Spring
      */
-    @PostConstruct
+    @Override
+	@PostConstruct
     public void init() {
 
 		loadPlugins();
@@ -87,13 +88,13 @@ public class ExtendedSpringPluginManager extends SpringPluginManager {
 					dynamicControllerRegistry, getApplicationContext());
 			extensionsInjector.injectExtensions();
 		}
-        
+
     }
 
 	public boolean isAutowire() {
 		return autowire;
 	}
-	
+
 	public boolean isSingleton() {
 		return singleton;
 	}
@@ -101,5 +102,5 @@ public class ExtendedSpringPluginManager extends SpringPluginManager {
 	public boolean isInjectable() {
 		return injectable;
 	}
-    
+
 }

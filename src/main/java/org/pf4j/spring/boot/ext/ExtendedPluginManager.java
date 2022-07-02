@@ -32,7 +32,7 @@ public class ExtendedPluginManager extends DefaultPluginManager {
 	private boolean autowire = true;
 	/** Whether always returns a singleton instance. */
 	private boolean singleton = true;
-	
+
 	public ExtendedPluginManager(File pluginsRoot, boolean autowire, boolean singleton ) {
 		super(pluginsRoot.toPath());
 		this.autowire = autowire;
@@ -50,7 +50,7 @@ public class ExtendedPluginManager extends DefaultPluginManager {
 		this.autowire = autowire;
 		this.singleton = singleton;
 	}
-	
+
 	@Override
 	protected ExtensionFactory createExtensionFactory() {
 
@@ -62,17 +62,17 @@ public class ExtendedPluginManager extends DefaultPluginManager {
 
 		} else {
 			if (this.isSingleton()) {
-				return new SingletonExtensionFactory();
+				return new SingletonExtensionFactory(this);
 			}
 			return new DefaultExtensionFactory();
 		}
 
 	}
-	
+
 	public boolean isAutowire() {
 		return autowire;
 	}
-	
+
 	public boolean isSingleton() {
 		return singleton;
 	}
